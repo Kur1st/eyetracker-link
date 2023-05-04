@@ -256,3 +256,4 @@ MonoBehaviour:
   box: {fileID: 4413879652220065602, guid: aa85f9e876b68ce4caa3a80f5d9cb466, type: 3}
   goal: {fileID: 7296982984873130960, guid: ee32ab36ee8763945ba89a59878c536b, type: 3}
   mover: {fileID: 2701050070164351532, guid: d8f04d9bace155044968efb8ddf14cc2, type: 3}
+  goalPoint: {fileID: 9123298410669145198, guid: a3f9c3161eff1a144bc312889d547f26, type: 3}

@@ -23,11 +23,13 @@ public class GameInstanceBehaviour : MonoBehaviour
     [SerializeField] public GameObject box;
     [SerializeField] public GameObject goal;
     [SerializeField] public GameObject mover;
+    [SerializeField] public GameObject goalPoint;
 
     void Start()
     {
         lvl_num = 0;
         levels = Resources.LoadAll<TextAsset>("Sokoban");
+        Debug.Log(levels.Length + " levels loaded");
         nextLevel();
     }
 
@@ -37,8 +39,8 @@ public class GameInstanceBehaviour : MonoBehaviour
         //in matrix 0 is empty space, 1 is wall, 2 is box, 3 is goal, 4 is player
         string[] lines = file.text.Split('\n');
         string[] s = lines[0].Split(' ');
-        height = int.Parse(s[0]);
-        width = int.Parse(s[1]);
+        height = int.Parse(s[1]);
+        width = int.Parse(s[0]);
         field = new GameObject[width, height];
         movables = new GameObject[width, height];
 
@@ -56,7 +58,8 @@ public class GameInstanceBehaviour : MonoBehaviour
             scale = (top_right.x - bot_left.x) / width;
             startPos = new Vector2(bot_left.x, middle.y - scale * height / 2);
         }
-         
+
+        Debug.Log(scale);
 
         for (int i = 0; i< width; i++)
         {
@@ -68,34 +71,52 @@ public class GameInstanceBehaviour : MonoBehaviour
                 {
                     field[x, y] = Instantiate(empty);
                     field[x, y].transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
-                    
+                    float toScale = 1 / field[x, y].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+                    field[x, y].transform.localScale = new Vector3(toScale * scale, toScale * scale , 1);
+
                 }
                 else if (s[x] == "1")
                 {
                     field[x, y] = Instantiate(wall);
                     field[x, y].transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
+                    float toScale = 1 / field[x, y].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+                    field[x, y].transform.localScale = new Vector3(toScale * scale, toScale * scale, 1);
                 }
                 else if (s[x] == "2")
                 {
                     field[x, y] = Instantiate(empty);
                     field[x, y].transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
+                    float toScale = 1 / field[x, y].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+                    field[x, y].transform.localScale = new Vector3(toScale * scale, toScale * scale, 1);
                     movables[x, y] = Instantiate(box);
                     movables[x, y].transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
                     movables[x, y].GetComponent<Movable>().setPos(x, y);
+                    toScale = 1 / movables[x, y].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+                    movables[x, y].transform.localScale = new Vector3(toScale * scale, toScale * scale, 1);
                 }
                 else if (s[x] == "3")
                 {
                     field[x, y] = Instantiate(goal);
                     field[x, y].transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
+                    float toScale = 1 / field[x, y].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+                    field[x, y].transform.localScale = new Vector3(toScale * scale, toScale * scale, 1);
+                    GameObject gp = Instantiate(goalPoint);
+                    gp.transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
+                    toScale = 1 / gp.GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+                    gp.transform.localScale = new Vector3(toScale * scale * 0.5f, toScale * scale * 0.5f, 1);
                 }
                 else if (s[x] == "4")
                 {
                     field[x, y] = Instantiate(empty);
                     field[x, y].transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
+                    float toScale = 1 / field[x, y].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+                    field[x, y].transform.localScale = new Vector3(toScale  * scale, toScale * scale, 1);
                     player = Instantiate(mover);
                     movables[x, y] = player;
                     movables[x, y].transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
                     player.GetComponent<Movable>().setPos(x, y);
+                    toScale = 1 / movables[x, y].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+                    movables[x, y].transform.localScale = new Vector3(toScale * scale, toScale * scale, 1);
                 }
             }
         }
@@ -103,6 +124,7 @@ public class GameInstanceBehaviour : MonoBehaviour
 
     void nextLevel()
     {
+        Debug.Log("Level: " + (lvl_num+1));
         if (lvl_num != 0)
             destroyAll();
         if (lvl_num < levels.Length)
