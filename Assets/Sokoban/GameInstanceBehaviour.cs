@@ -126,7 +126,8 @@ public class GameInstanceBehaviour : MonoBehaviour
         }
         foreach(GameObject i in field)
         {
-            Destroy(i);
+            if (i != null)
+                Destroy(i);
         }
     }
 
@@ -147,9 +148,9 @@ public class GameInstanceBehaviour : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                if (field[x, y].CompareTag("Goal"))
+                if (!(field[x,y] == null) && field[x, y].CompareTag("Goal"))
                 {
-                    if (movables[x, y] == null)
+                    if (movables[x, y] == null || !movables[x, y].CompareTag("Box"))
                         flag = false;
                 }
             }
