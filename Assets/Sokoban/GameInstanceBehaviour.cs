@@ -8,6 +8,7 @@ using UnityEngine;
 public class GameInstanceBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
+    bool left, right, up, down;
     public static int height;
     public static int width;
     public static float scale;
@@ -59,30 +60,27 @@ public class GameInstanceBehaviour : MonoBehaviour
             startPos = new Vector2(bot_left.x, middle.y - scale * height / 2);
         }
 
-        Debug.Log(scale);
-
         for (int i = 0; i< width; i++)
         {
             s = lines[i + 1].Split();
             int y = height - i - 1;
             for (int x = 0; x < width; x++)
             {
-                if (s[x] == "0")
+                if (s[x] == "0") //empty
                 {
                     field[x, y] = Instantiate(empty);
                     field[x, y].transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
                     float toScale = 1 / field[x, y].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
                     field[x, y].transform.localScale = new Vector3(toScale * scale, toScale * scale , 1);
-
                 }
-                else if (s[x] == "1")
+                else if (s[x] == "1") //wall
                 {
                     field[x, y] = Instantiate(wall);
                     field[x, y].transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
                     float toScale = 1 / field[x, y].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
                     field[x, y].transform.localScale = new Vector3(toScale * scale, toScale * scale, 1);
                 }
-                else if (s[x] == "2")
+                else if (s[x] == "2") //box
                 {
                     field[x, y] = Instantiate(empty);
                     field[x, y].transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
@@ -94,7 +92,7 @@ public class GameInstanceBehaviour : MonoBehaviour
                     toScale = 1 / movables[x, y].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
                     movables[x, y].transform.localScale = new Vector3(toScale * scale, toScale * scale, 1);
                 }
-                else if (s[x] == "3")
+                else if (s[x] == "3") //goal
                 {
                     field[x, y] = Instantiate(goal);
                     field[x, y].transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
@@ -105,7 +103,7 @@ public class GameInstanceBehaviour : MonoBehaviour
                     toScale = 1 / gp.GetComponent<SpriteRenderer>().sprite.bounds.size.y;
                     gp.transform.localScale = new Vector3(toScale * scale * 0.5f, toScale * scale * 0.5f, 1);
                 }
-                else if (s[x] == "4")
+                else if (s[x] == "4") //player
                 {
                     field[x, y] = Instantiate(empty);
                     field[x, y].transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
@@ -156,14 +154,30 @@ public class GameInstanceBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("a"))
+        if (Input.GetKeyDown("a") || left)
+        {
             player.GetComponent<Movable>().move(-1, 0);
-        else if (Input.GetKeyDown("w"))
+            left = false;
+            Debug.Log("event left");
+        }
+        else if (Input.GetKeyDown("w") || up)
+        {
             player.GetComponent<Movable>().move(0, 1);
-        else if (Input.GetKeyDown("d"))
+            up = false;
+            Debug.Log("event up");
+        }
+        else if (Input.GetKeyDown("d") || right)
+        {
             player.GetComponent<Movable>().move(1, 0);
-        else if (Input.GetKeyDown("s"))
+            right = false;
+            Debug.Log("event right");
+        }
+        else if (Input.GetKeyDown("s") || down)
+        {
             player.GetComponent<Movable>().move(0, -1);
+            down = false;
+            Debug.Log("event down");
+        }
 
         bool flag = true;
         for (int x = 0; x < width; x++)
@@ -181,5 +195,22 @@ public class GameInstanceBehaviour : MonoBehaviour
         {
             nextLevel();
         }
+    }
+
+    public void goLeft()
+    {
+        left = true;
+    }
+    public void goUp()
+    {
+        up = true;
+    }
+    public void goRight()
+    {
+        right = true;
+    }
+    public void goDown()
+    {
+        down = true;
     }
 }
