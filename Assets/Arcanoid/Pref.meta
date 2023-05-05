@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Arcanoid/Scenes/Arc Level 2.meta
+guid: 68f66bac139708043831b2f24cd26dfb
+========
 guid: c9afbf8f90575438f8de25c6a87d1985
+>>>>>>>> RuslanTest:Assets/Arcanoid/Pref.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

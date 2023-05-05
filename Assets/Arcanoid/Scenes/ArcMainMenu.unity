@@ -160,7 +160,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<<< HEAD:Assets/Arcanoid/ArcMainMenu.unity
   m_AnchoredPosition: {x: -770.7, y: -456.8}
+========
+  m_AnchoredPosition: {x: -150, y: -49}
+>>>>>>>> RuslanTest:Assets/Arcanoid/Scenes/ArcMainMenu.unity
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &341124611

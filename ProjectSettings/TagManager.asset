@@ -9,6 +9,9 @@ TagManager:
   - Goal
   - Wall
   - Mover
+  - Undefined
+  - destr
+  - player
   layers:
   - Default
   - TransparentFX

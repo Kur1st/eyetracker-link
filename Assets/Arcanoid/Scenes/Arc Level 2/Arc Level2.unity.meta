@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Arcanoid/ArcMainMenu.unity.meta
+guid: 47f26eae6ce794f0fadb7b5ffcadb4f9
+========
 guid: 32849735176eb4072a7748ec14b764af
+>>>>>>>> RuslanTest:Assets/Arcanoid/Scenes/Arc Level 2/Arc Level2.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
