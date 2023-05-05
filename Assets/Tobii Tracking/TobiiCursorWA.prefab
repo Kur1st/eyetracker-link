@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 170232386003522724}
   - component: {fileID: 170232386003522779}
+  - component: {fileID: 2531028719800842233}
   m_Layer: 0
   m_Name: TobiiCursorWA
   m_TagString: Untagged
@@ -55,6 +56,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2531028719800842233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170232386003522725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66215016f36674e47bb0cdc32987eab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 100
 --- !u!1 &170232386050254303
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +163,6 @@ GameObject:
   m_Component:
   - component: {fileID: 170232387864589007}
   - component: {fileID: 170232387864589005}
-  - component: {fileID: 170232387864589006}
   m_Layer: 0
   m_Name: TobiiCursor
   m_TagString: Untagged
@@ -224,17 +237,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &170232387864589006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170232387864589000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3331eb71b515ba498db93c7164ea7b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mass: 100
-  scaleAnim: 0

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Tobii.Gaming;
 using UnityEngine;
@@ -49,6 +49,6 @@ public class TobiiHelper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Denis/prefabs/Scene Changer.prefab.meta
+guid: 4a45e9da75978ba4d9e42a9464898e25
+========
 guid: 6ffed79fe674a6a4ab00cf449af7e33c
+>>>>>>>> CursorAnimation:Assets/Tobii Tracking/TobiiCursorWA.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
