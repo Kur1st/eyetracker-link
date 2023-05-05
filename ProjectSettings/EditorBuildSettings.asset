@@ -9,57 +9,57 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Game1/Game.unity
+    path: Assets/Denis/Game 1/Game.unity
     guid: ff3c2689bde6243c2929634bd9f46f2e
   - enabled: 1
-    path: Assets/Game1/GameOverMenu.unity
+    path: Assets/Denis/Game 1/GameOverMenu.unity
     guid: 76a9e4d0aa2be4f5e96d7d6fe886655b
   - enabled: 1
-    path: Assets/Game1/MainMenu.unity
+    path: Assets/Denis/Game 1/MainMenu.unity
     guid: b5589f2d1a84d422491a01731eb63b7d
   - enabled: 1
-    path: Assets/Game1/Menu1.unity
+    path: Assets/Denis/Game1/Menu1.unity
     guid: 67ed79bff8ef244a6889e82e2c5d4cdd
   - enabled: 1
-    path: Assets/Game1/MyMenu.unity
+    path: Assets/Denis/Game 1/MyMenu.unity
     guid: 6b13bc7f6991f4c7c9bd6c11dc6728b4
   - enabled: 1
-    path: Assets/Game2/Game 2/Level 4/Car.unity
+    path: Assets/Denis/Game 2/Level 4/Car.unity
     guid: daabd1b3aa3104c8a8b7ed91569e0eee
   - enabled: 1
-    path: Assets/Game2/Game 2/Level 4/CarGameOver.unity
+    path: Assets/Denis/Game 2/Level 4/CarGameOver.unity
     guid: 46ee27d6f5f314970b1406cf19c7f267
   - enabled: 1
-    path: Assets/Game2/Game 2/LevelMenu.unity
+    path: Assets/Denis/Game 2/LevelMenu.unity
     guid: 9145ef656b7134c85a51fbedf0eb3fe0
   - enabled: 1
-    path: Assets/Game2/Game 2/Level 4/CarWin.unity
+    path: Assets/Denis/Game 2/Level 4/CarWin.unity
     guid: a657468b2b0674fbb938e8a3aea74422
   - enabled: 1
-    path: Assets/Game2/Game 2/Level 2/Piramida.unity
+    path: Assets/Denis/Game 2/Level 2/Piramida.unity
     guid: c31ea7851c7f44944916601f077a009d
   - enabled: 1
-    path: Assets/Game2/Game 2/Level 2/PiramidaGameOver.unity
+    path: Assets/Denis/Game 2/Level 2/PiramidaGameOver.unity
     guid: d797a975c7cc74c498d7d2dd7e969e4e
   - enabled: 1
-    path: Assets/Game2/Game 2/Level 2/PiramidaWin.unity
+    path: Assets/Denis/Game 2/Level 2/PiramidaWin.unity
     guid: 9233e4b8e2f9644cda039f981a272d40
   - enabled: 1
-    path: Assets/Game2/Game 2/Level 3/Bucket.unity
+    path: Assets/Denis/Game 2/Level 3/Bucket.unity
     guid: 9ebf1e3bcfdc14982b840de4b49d9ed6
   - enabled: 1
-    path: Assets/Game2/Game 2/Level 3/BucketGameOver.unity
+    path: Assets/Denis/Game 2/Level 3/BucketGameOver.unity
     guid: acb2e1eb94d034ed2aa8a61fb956988d
   - enabled: 1
-    path: Assets/Game2/Game 2/Level 3/BucketWin.unity
+    path: Assets/Denis/Game 2/Level 3/BucketWin.unity
     guid: 1506f98c22f95447ea3abeca62e96950
   - enabled: 1
-    path: Assets/Game2/Game 2/Level 1/Emerald.unity
+    path: Assets/Denis/Game 2/Level 1/Emerald.unity
     guid: 230315983706148958e38647991221e4
   - enabled: 1
-    path: Assets/Game2/Game 2/Level 1/EmeraldGameOver.unity
+    path: Assets/Denis/Game 2/Level 1/EmeraldGameOver.unity
     guid: 95fd8de38a9fb4998b1484913393ca0b
   - enabled: 1
-    path: Assets/Game2/Game 2/Level 1/EmeraldWin.unity
+    path: Assets/Denis/Game 2/Level 1/EmeraldWin.unity
     guid: d678f725695bd42e69ef6d1639b6e1c0
   m_configObjects: {}
