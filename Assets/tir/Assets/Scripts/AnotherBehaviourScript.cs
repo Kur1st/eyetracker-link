@@ -25,7 +25,7 @@ public class AnotherBehaviourScript : MonoBehaviour
             int rand = Random.Range(0, baloons.Length);
             GameObject baloon = Instantiate(obj);
             baloon.AddComponent<Movement>();
-            baloon.AddComponent<BoxCollider2D>();
+            //baloon.AddComponent<BoxCollider2D>();
             baloon.GetComponent<SpriteRenderer>().sprite = baloons[rand];
             baloon.GetComponent<Movement>().direction = new Vector2(-Random.Range(0.025f, 0.1f), Random.Range(-0.01f, 0.01f));
             baloon.GetComponent<Movement>().newSprite = babah;
