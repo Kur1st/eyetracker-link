@@ -9,6 +9,9 @@ public class Movement : MonoBehaviour
     public GameObject ballon;
     public Sprite newSprite;
     public Sprite[] balloons;
+
+    float timeToBlow = 1;
+    float time = 0;
     void OnBecameInvisible()
     {
         Destroy(gameObject);
@@ -28,5 +31,21 @@ public class Movement : MonoBehaviour
         transform.Translate(direction);
     }
 
+    private void Update()
+    {
+        Vector3 pos = transform.position;
+        Vector3 wp = TobiiHelper.getWorldPoint();
+
+        if ((wp - pos).magnitude <= 1.5f)
+        {
+            time += Time.deltaTime;
+        }
+        else
+        {
+            time = 0;
+        }
+        if (time >= timeToBlow)
+            OnMouseOver();
+    }
 }
 
