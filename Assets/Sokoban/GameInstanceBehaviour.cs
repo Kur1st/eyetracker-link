@@ -14,6 +14,7 @@ public class GameInstanceBehaviour : MonoBehaviour
     public static float scale;
     public static GameObject[,] field;
     public static GameObject[,] movables;
+    public static GameObject[,] goals;
     private GameObject player;
 
     private TextAsset[] levels;
@@ -31,7 +32,7 @@ public class GameInstanceBehaviour : MonoBehaviour
         lvl_num = 0;
         levels = Resources.LoadAll<TextAsset>("Sokoban");
         Debug.Log(levels.Length + " levels loaded");
-        nextLevel();
+        loadLevel();
     }
 
     private void parseLevel(TextAsset file)
@@ -44,6 +45,7 @@ public class GameInstanceBehaviour : MonoBehaviour
         width = int.Parse(s[0]);
         field = new GameObject[width, height];
         movables = new GameObject[width, height];
+        goals = new GameObject[width, height];
 
         Vector2 bot_left = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         Vector2 top_right = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
@@ -98,10 +100,10 @@ public class GameInstanceBehaviour : MonoBehaviour
                     field[x, y].transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
                     float toScale = 1 / field[x, y].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
                     field[x, y].transform.localScale = new Vector3(toScale * scale, toScale * scale, 1);
-                    GameObject gp = Instantiate(goalPoint);
-                    gp.transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
-                    toScale = 1 / gp.GetComponent<SpriteRenderer>().sprite.bounds.size.y;
-                    gp.transform.localScale = new Vector3(toScale * scale * 0.5f, toScale * scale * 0.5f, 1);
+                    goals[x, y] = Instantiate(goalPoint);
+                    goals[x, y].transform.position = startPos + new Vector2(x + 0.5f, y + 0.5f) * scale;
+                    toScale = 1 / goals[x, y].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+                    goals[x, y].transform.localScale = new Vector3(toScale * scale * 0.5f, toScale * scale * 0.5f, 1);
                 }
                 else if (s[x] == "4") //player
                 {
@@ -120,7 +122,7 @@ public class GameInstanceBehaviour : MonoBehaviour
         }
     }
 
-    void nextLevel()
+    void loadLevel()
     {
         Debug.Log("Level: " + (lvl_num+1));
         if (lvl_num != 0)
@@ -134,7 +136,6 @@ public class GameInstanceBehaviour : MonoBehaviour
             Debug.Log("Quit");
             Application.Quit();
         }
-        lvl_num++;
     }
 
     void destroyAll()
@@ -149,6 +150,17 @@ public class GameInstanceBehaviour : MonoBehaviour
             if (i != null)
                 Destroy(i);
         }
+        foreach (GameObject i in goals)
+        {
+            if (i != null)
+                Destroy(i);
+        }
+    }
+
+    public void restart()
+    {
+        destroyAll();
+        loadLevel();
     }
 
     // Update is called once per frame
@@ -193,7 +205,9 @@ public class GameInstanceBehaviour : MonoBehaviour
         }
         if (flag)
         {
-            nextLevel();
+            destroyAll();
+            lvl_num++;
+            loadLevel();
         }
     }
 
