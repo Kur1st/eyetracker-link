@@ -7,6 +7,7 @@ using UnityEngine;
 public class TobiiHelper : MonoBehaviour
 {
     public static GazePoint lastGazePoint;
+    public static Vector2 calibration = Vector2.zero;
     public static Vector2 getWorldPoint()
     {
         if (TobiiAPI.IsConnected)
@@ -15,7 +16,7 @@ public class TobiiHelper : MonoBehaviour
             if (gp.IsValid)
             {
                 lastGazePoint = gp;
-                return Camera.main.ScreenToWorldPoint(gp.Screen);
+                return Camera.main.ScreenToWorldPoint(gp.Screen + calibration);
             }
             else return Camera.main.ScreenToWorldPoint(lastGazePoint.Screen);
         }
@@ -31,7 +32,7 @@ public class TobiiHelper : MonoBehaviour
             if (gp.IsValid)
             {
                 lastGazePoint = gp;
-                return Camera.main.ScreenToViewportPoint(gp.Screen);
+                return Camera.main.ScreenToViewportPoint(gp.Screen + calibration);
             }
             else return Camera.main.ScreenToViewportPoint(lastGazePoint.Screen);
         }
