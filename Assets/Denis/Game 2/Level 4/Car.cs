@@ -53,7 +53,7 @@ public class Car : MonoBehaviour
         if (flag && !isLineStarted) // запускать по нажатию на кнопку
         {
             Line.positionCount = 0;
-            Vector2 mousePos = GetWorldCoordinate(Input.mousePosition);
+            Vector2 mousePos = TobiiHelper.getWorldPoint();
 
             Line.positionCount = 2;
             Line.SetPosition(0, mousePos);
@@ -63,7 +63,7 @@ public class Car : MonoBehaviour
 
         if (isLineStarted)
         {
-            Vector3 currentPos = GetWorldCoordinate(Input.mousePosition);
+            Vector3 currentPos = TobiiHelper.getWorldPoint();
             Debug.Log(currentPos);
             float distance = Vector2.Distance(currentPos, Line.GetPosition(Line.positionCount - 1));
             if (distance > minimumVertexDistance)
@@ -106,7 +106,7 @@ public class Car : MonoBehaviour
     private void UpdateLine()
     {
         Line.positionCount++;
-        Line.SetPosition(Line.positionCount - 1, GetWorldCoordinate(Input.mousePosition));
+        Line.SetPosition(Line.positionCount - 1, TobiiHelper.getWorldPoint());
     }
     private Vector2 GetWorldCoordinate(Vector2 mousePosition)
     {

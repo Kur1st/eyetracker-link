@@ -5,6 +5,7 @@ using UnityEngine;
 public class CursorGame : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] float mass;
     void Start()
     {
         
@@ -13,7 +14,8 @@ public class CursorGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector2(cursorPos.x, cursorPos.y);
+        Vector3 cursorPos = TobiiHelper.getWorldPoint();
+        transform.position += (cursorPos - transform.position).sqrMagnitude * (cursorPos - transform.position).normalized / mass;
+        transform.position = new Vector3(transform.position.x, transform.position.y, 1);
     }
 }
