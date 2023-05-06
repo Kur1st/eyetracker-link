@@ -84,7 +84,7 @@ public class Car : MonoBehaviour
                     }
 
                 }
-                if (minDist < 0.31f)
+                if (minDist < 0.6f)
                 {
                     count++;
                 }
