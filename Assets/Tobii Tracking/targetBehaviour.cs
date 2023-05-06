@@ -6,6 +6,7 @@ public class targetBehaviour : MonoBehaviour
 {
     [SerializeField] float calibrationLength;
     [SerializeField] float timeToPoint;
+    [SerializeField] GameObject calibrationInstance;
     float time = 0;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class targetBehaviour : MonoBehaviour
             Debug.Log("Calibrating");
             if (time >= timeToPoint)
             {
-                CalibrationBehaviour.addCalibration(transform.position - wp);
+                calibrationInstance.GetComponent<CalibrationBehaviour>().addCalibration(transform.position - wp);
                 Destroy(gameObject);
                 Debug.Log("Calibrated");
             }

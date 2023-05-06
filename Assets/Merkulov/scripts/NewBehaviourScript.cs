@@ -12,6 +12,7 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject Armor;
     public GameObject Walking;
     public GameObject Text;
+    [SerializeField] public GameObject changeScene;
     public long score = 0;
     public float bst = 2;
     public float speed = 3.5f;
@@ -78,8 +79,9 @@ public class NewBehaviourScript : MonoBehaviour
             }
             if (invulnarability == 0)
             {
-                if (collectedFood <= 8) { 
-                    Destroy(gameObject);
+                if (collectedFood <= 8) {
+                    changeScene.GetComponent<Scene>().ChangeScene("MainMenu");
+                    //Destroy(gameObject);
                 }
                 score += 25;
                 collectedFood = 0;

@@ -5,7 +5,8 @@ using UnityEngine;
 public class CalibrationBehaviour : MonoBehaviour
 {
     public static Vector2 calibration = Vector2.zero;
-    [SerializeField] public static int calibrationCounter;
+    [SerializeField] public int calibrationCounter;
+    [SerializeField] public GameObject sceneChange;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +19,11 @@ public class CalibrationBehaviour : MonoBehaviour
         if (calibrationCounter <= 0)
         {
             TobiiHelper.calibration = calibration;
-            //TODO change screen
+            sceneChange.GetComponent<Scene>().ChangeScene("MainMenu");
         }
     }
 
-    public static void addCalibration(Vector2 range)
+    public void addCalibration(Vector2 range)
     { 
         calibration += range;
         calibrationCounter -= 1;
